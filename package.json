@@ -1,5 +1,5 @@
 {
-    "name": "Polyfill-ie8",
+    "name": "polyfill",
     "version": "0.0.1",
     "description": "Polyfills for IE8, only those who are needed for ITSA to work",
     "author": [
@@ -20,7 +20,7 @@
         "polyfill",
         "IE8"
     ],
-    "main": "polyfills.js",
+    "main": "polyfill.js",
     "directories": {
         "lib": "./lib"
     },
