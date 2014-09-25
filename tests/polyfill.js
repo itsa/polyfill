@@ -6,7 +6,14 @@ var expect = require('chai').expect,
 
 describe('Testgroup', function () {
 
-    it('Your test', function () {
+    it('test Array.isArray', function () {
+        Array.isArray([]).should.be.true;
+    });
+
+    it('test Object.defineProperty', function () {
+        var obj = {};
+        Object.defineProperty(obj, 'a', {value: 10});
+        expect(obj.a).to.be.eql(10);
     });
 
 });
