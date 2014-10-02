@@ -50,4 +50,46 @@ describe('Testgroup', function () {
         expect(obj.a).to.be.eql(10);
     });
 
+    it('test Object.create', function () {
+        var obj = Object.create({a: 10});
+        expect(obj.a).to.be.eql(10);
+    });
+
+    it('test JSON.parse', function () {
+        var objString = '{"a":10}',
+            obj;
+        try {
+            obj = JSON.parse(objString);
+        }
+        catch (err) {}
+        expect(obj.a).to.be.eql(10);
+    });
+
+    it('test JSON.stringify', function () {
+        var obj = {a: 10};
+        expect(JSON.stringify(obj)).to.be.eql('{"a":10}');
+    });
+
+    it('test JSON.parse with reviver', function () {
+        var objString = '{"a":10, "b": 20}',
+            obj,
+            reviver = function(key, value) {
+                return (key==='a') ? 15: value;
+            };
+        try {
+            obj = JSON.parse(objString, reviver);
+        }
+        catch (err) {}
+        expect(obj.a).to.be.eql(15);
+    });
+
+    it('test JSON.stringify with replacer', function () {
+        var obj = {a: 10, b: 20},
+            replacer = function(key, value) {
+                value.b = 30;
+                return value;
+            };
+        expect(JSON.stringify(obj, replacer)).to.be.eql('{"a":10,"b":30}');
+    });
+
 });
