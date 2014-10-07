@@ -4,4 +4,6 @@ require('./lib/array.indexof.js');
 require('./lib/array.isarray.js');
 require('./lib/array.some.js');
 require('./lib/object.create.js');
+require('./lib/object.keys.js');
 require('./lib/object.defineproperty.js');
+require('./lib/css.opacity.js');
