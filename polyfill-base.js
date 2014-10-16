@@ -1,4 +1,5 @@
 require('./lib/window.console.js');
+require('./lib/array.every.js');
 require('./lib/array.filter.js');
 require('./lib/array.foreach.js');
 require('./lib/array.indexof.js');
