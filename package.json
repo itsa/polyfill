@@ -17,8 +17,7 @@
     },
     "keywords": [
         "itsa",
-        "polyfill",
-        "IE8"
+        "polyfill"
     ],
     "main": "polyfill.js",
     "directories": {

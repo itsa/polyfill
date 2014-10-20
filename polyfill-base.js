@@ -1,14 +1,2 @@
-require('./lib/array.every.js');
-require('./lib/array.filter.js');
-require('./lib/array.foreach.js');
-require('./lib/array.indexof.js');
-require('./lib/array.isarray.js');
-require('./lib/array.some.js');
-require('./lib/css.opacity.js');
 require('./lib/element.matchesselector.js');
-require('./lib/node.contains.js');
-require('./lib/object.create.js');
-require('./lib/object.keys.js');
-require('./lib/object.defineproperty.js');
 require('./lib/window.console.js');
-require('./lib/window.getcomputedstyle.js');
