@@ -19,7 +19,7 @@
         "itsa",
         "polyfill"
     ],
-    "main": "polyfill.js",
+    "main": "polyfill-base.js",
     "directories": {
         "lib": "./lib"
     },
