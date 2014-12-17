@@ -19,31 +19,31 @@ module.exports = function (window) {
         });
     }
 
-    if (window._ITSAmodules.Transform) {
-        return window._ITSAmodules.Transform; // Transform was already created
+    if (window._ITSAmodules.Perspective) {
+        return window._ITSAmodules.Perspective; // Perspective was already created
     }
 
     var DOCUMENT_STYLE = window.document.documentElement.style,
         VENDORS = ['-webkit-', '-moz-', '-ms-', '-o-'],
-        RANSFORM = 'ransform',
-        TRANSFORM = 't'+RANSFORM,
-        transform;
+        ERSPECTIVE = 'erspective',
+        PERSPECTIVE = 'p'+ERSPECTIVE,
+        perspective;
 
     // Map transition properties to vendor-specific versions.
     // One-off required for cssText injection.
-    if (typeof DOCUMENT_STYLE.transform !== 'undefined') {
-        transform = TRANSFORM;
+    if (typeof DOCUMENT_STYLE.perspective !== 'undefined') {
+        perspective = PERSPECTIVE;
     }
     else {
         VENDORS.some(function(val) { // then vendor specific
-            var property1 = val + TRANSFORM,
-                property2 = val + 'T'+RANSFORM;
-            ((typeof DOCUMENT_STYLE[property1] !== 'undefined') || (typeof DOCUMENT_STYLE[property2] !== 'undefined')) && (transform=property1);
-            return transform;
+            var property1 = val + PERSPECTIVE,
+                property2 = val + 'P'+ERSPECTIVE;
+            ((typeof DOCUMENT_STYLE[property1] !== 'undefined') || (typeof DOCUMENT_STYLE[property2] !== 'undefined')) && (perspective=property1);
+            return perspective;
         });
     }
 
-    window._ITSAmodules.Transform = transform;
+    window._ITSAmodules.Perspective = perspective;
 
-    return transform;
+    return perspective;
 };
