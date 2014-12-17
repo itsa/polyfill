@@ -17,17 +17,21 @@
     },
     "keywords": [
         "itsa",
-        "polyfill",
-        "IE8"
+        "polyfill"
     ],
-    "main": "polyfill.js",
+    "main": "polyfill-base.js",
     "directories": {
-        "lib": "./lib"
+        "lib": "./lib",
+        "extra": "./extra"
     },
     "engines": {
         "node": "*"
     },
+    "dependencies": {
+        "ypromise": "^0.2.3"
+    },
     "devDependencies": {
+        "node-win": "itsa/node-win",
         "chai": "^1.9.1",
         "istanbul": "^0.3.0",
         "jshint": "^2.5.5",

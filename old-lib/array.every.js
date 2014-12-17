@@ -1,12 +1,12 @@
-if (!Array.some) {
+if (!Array.every) {
     (function (global) {
         "use strict";
-        Array.prototype.some = function some(callback, scope) {
+        Array.prototype.every = function every(callback, scope) {
             var array = this,
                 length = array.length,
                 index = 0;
-            for (index = 0; index<length; ++index) {
-                if (callback.call(scope || global, array[index], index, array)) {
+            for (index; index<length; ++index) {
+                if (!callback.call(scope || global, array[index], index, array)) {
                     break;
                 }
             }
@@ -14,5 +14,3 @@ if (!Array.some) {
         };
     }(typeof global !== 'undefined' ? global : /* istanbul ignore next */ this));
 }
-
-

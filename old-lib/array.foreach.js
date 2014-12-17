@@ -4,7 +4,7 @@ if (!Array.forEach) {
         Array.prototype.forEach = function forEach(callback, scope) {
             var array = this,
                 length = array.length,
-                index = 0;
+                index;
             for (index = 0; index<length; ++index) {
                 callback.call(scope || global, array[index], index, array);
             }
