@@ -43,7 +43,7 @@ module.exports = function (window) {
         });
     }
 
-    window._ITSAmodules.Transform = transform;
+    window._ITSAmodules.Transform = transform || TRANSFORM;
 
     return transform;
 };
