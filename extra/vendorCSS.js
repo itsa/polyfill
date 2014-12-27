@@ -31,6 +31,7 @@ module.exports = function (window) {
     }
 
     var DOCUMENT_STYLE = window.document.documentElement.style,
+        RUNNING_ON_NODE = (typeof global !== 'undefined') && (global.window!==window),
         VENDORS = ['-webkit-', '-moz-', '-ms-', '-o-'],
         vendorCSS;
 
@@ -40,22 +41,25 @@ module.exports = function (window) {
             if (cssProperty==='') {
                 return '';
             }
-            if (typeof DOCUMENT_STYLE[cssProperty] !== UNDEFINED) {
-                vendorProperty = cssProperty;
+            if (!RUNNING_ON_NODE && !vendorCSS.cssProps[cssProperty]) {
+                if (typeof DOCUMENT_STYLE[cssProperty] !== UNDEFINED) {
+                    vendorProperty = cssProperty;
+                }
+                else {
+                    VENDORS.some(function(val) { // then vendor specific
+                        var property = val + cssProperty,
+                            propertyCamelCase = toCamelCase(property);
+                        if ((typeof DOCUMENT_STYLE[property] !== UNDEFINED) || (typeof DOCUMENT_STYLE[propertyCamelCase] !== UNDEFINED)) {
+                            vendorProperty = property;
+                        }
+                        return vendorProperty;
+                    });
+                }
+                vendorCSS.cssProps[vendorProperty] = true;
             }
-            else {
-                VENDORS.some(function(val) { // then vendor specific
-                    var property = val + cssProperty,
-                        propertyCamelCase = toCamelCase(property);
-                    if ((typeof DOCUMENT_STYLE[property] !== UNDEFINED) || (typeof DOCUMENT_STYLE[propertyCamelCase] !== UNDEFINED)) {
-                        vendorProperty = property;
-                    }
-                    return vendorProperty;
-                });
-            }
-            this.cssProps[vendorProperty] = true;
-            return vendorProperty;
+            return vendorProperty || cssProperty;
         },
+
         cssProps: {}
     };
 
