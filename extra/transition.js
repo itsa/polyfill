@@ -42,7 +42,7 @@ module.exports = function (window) {
         });
     }
 
-    window._ITSAmodules.Transition = transition;
+    window._ITSAmodules.Transition = transition || TRANSITION;
 
     return transition;
 };
