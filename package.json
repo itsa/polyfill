@@ -28,7 +28,8 @@
         "node": "*"
     },
     "dependencies": {
-        "ypromise": "^0.2.3"
+        "ypromise": "^0.2.3",
+        "js-ext": "itsa/js-ext"
     },
     "devDependencies": {
         "node-win": "itsa/node-win",

@@ -6,9 +6,11 @@
  * `transform`, `-webkit-transform`, `-moz-transform`, `-ms-transform`, `-o-transform` or `undefined` when not supported
  */
 
+require('js-ext/lib/object.js');
+
 module.exports = function (window) {
 
-    window._ITSAmodules || window.protectedProp('_ITSAmodules', {});
+    window._ITSAmodules || Object.protectedProp(window, '_ITSAmodules', {});
 
     if (window._ITSAmodules.Transition) {
         return window._ITSAmodules.Transition; // Transition was already created

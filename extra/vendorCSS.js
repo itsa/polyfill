@@ -17,7 +17,7 @@ var toCamelCase = function(input) {
 
 module.exports = function (window) {
 
-    window._ITSAmodules || window.protectedProp('_ITSAmodules', {});
+    window._ITSAmodules || Object.protectedProp(window, '_ITSAmodules', {});
 
     if (window._ITSAmodules.VendorCSS) {
         return window._ITSAmodules.VendorCSS; // VendorCSS was already created
