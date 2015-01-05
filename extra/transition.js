@@ -6,11 +6,17 @@
  * `transform`, `-webkit-transform`, `-moz-transform`, `-ms-transform`, `-o-transform` or `undefined` when not supported
  */
 
-require('js-ext/lib/object.js');
-
 module.exports = function (window) {
 
-    window._ITSAmodules || Object.protectedProp(window, '_ITSAmodules', {});
+    // NOTE: CANNOT use dependency to js-ext/lib/object.js --> would be circular!
+    if (!window._ITSAmodules) {
+        Object.defineProperty(window, '_ITSAmodules', {
+            configurable: false,
+            enumerable: false,
+            writable: false,
+            value: {} // `writable` is false means we cannot chance the value-reference, but we can change {} its members
+        });
+    }
 
     if (window._ITSAmodules.Transition) {
         return window._ITSAmodules.Transition; // Transition was already created

@@ -6,8 +6,6 @@
  * `transform`, `-webkit-transform`, `-moz-transform`, `-ms-transform`, `-o-transform` or `undefined` when not supported
  */
 
-require('js-ext/lib/object.js');
-
 var toCamelCase = function(input) {
         return input.replace(/-(.)/g, function(match, group) {
             return group.toUpperCase();
@@ -17,7 +15,15 @@ var toCamelCase = function(input) {
 
 module.exports = function (window) {
 
-    window._ITSAmodules || Object.protectedProp(window, '_ITSAmodules', {});
+    // NOTE: CANNOT use dependency to js-ext/lib/object.js --> would be circular!
+    if (!window._ITSAmodules) {
+        Object.defineProperty(window, '_ITSAmodules', {
+            configurable: false,
+            enumerable: false,
+            writable: false,
+            value: {} // `writable` is false means we cannot chance the value-reference, but we can change {} its members
+        });
+    }
 
     if (window._ITSAmodules.VendorCSS) {
         return window._ITSAmodules.VendorCSS; // VendorCSS was already created
