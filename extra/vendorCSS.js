@@ -11,7 +11,9 @@ var toCamelCase = function(input) {
             return group.toUpperCase();
         });
     },
-    UNDEFINED = 'undefined';
+    UNDEFINED = 'undefined',
+    // CAUTIOUS: need a copy of hashmap --> we cannot use js-ext/extra/hashap.js for that would lead to circular references!
+    createHashMap = require('../bin/local-hashmap.js').createMap;
 
 module.exports = function (window) {
 
@@ -21,7 +23,7 @@ module.exports = function (window) {
             configurable: false,
             enumerable: false,
             writable: false,
-            value: {} // `writable` is false means we cannot chance the value-reference, but we can change {} its members
+            value: createHashMap() // `writable` is false means we cannot chance the value-reference, but we can change {} its members
         });
     }
 

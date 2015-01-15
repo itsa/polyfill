@@ -22,6 +22,7 @@
     "main": "polyfill-base.js",
     "directories": {
         "lib": "./lib",
+        "bin": "./bin",
         "extra": "./extra"
     },
     "engines": {
